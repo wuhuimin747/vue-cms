@@ -10,5 +10,11 @@ git config --global user.email "747846472@qq.com"<br>
 git remote add origin git@github.com:wuhuimin747/vue-cms.git<br>
 git push -u origin master  (-f表示强制)
 
+3.基本操作
+git status<br>
+git add .<br>
+git commit -m "code change"<br>
+git push -u origin master<br>
+
 
 

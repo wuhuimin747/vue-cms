@@ -14,7 +14,8 @@ git push -u origin master  (-f 表示强制)
 git status<br>
 git add .<br>
 git commit -m "code change"<br>
-git push -u origin master<br>
+git push -u origin master(第一次)<br>
+git push <br>
 
 
 

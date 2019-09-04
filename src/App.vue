@@ -4,7 +4,10 @@
         <mt-header fixed title="huimin的商城"></mt-header>
 
         <!-- 这里是 router-view 路由区域 -->
-        <router-view></router-view>
+        <transition><!-- 使用滑动动画 -->
+            <router-view></router-view>
+        </transition>
+        
 
         <!-- 这里是底端的 Tabar 区域 -->
         <nav class="mui-bar mui-bar-tab">
@@ -32,8 +35,22 @@
 <script>
 </script>
 
-<style scoped>
+<style lang="less" scoped>
 .app_container{
     padding-top: 40px;
+    overflow: hidden;  //滑动是去掉滚动条
+}
+
+.v-enter {
+    opacity : 0;
+    transform : translateX(100%); 
+}
+.v-leave-to {
+    opacity : 0;
+    transform : translateX(-100%); 
+    position : absolute;
+}
+.v-enter-active , .v-leave-active{
+    transition : all 0.5s ease;
 }
 </style>

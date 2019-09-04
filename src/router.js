@@ -1,11 +1,23 @@
 //为了main。js简洁，将涉及到vue-router的部分挪到这里来
 import VueRouter from 'vue-router';
 
+//导入组件模板对象
+import home from './components/tabbar/HomeContainer.vue'
+import member from './components/tabbar/MemberContainer.vue'
+import search from './components/tabbar/SearchContainer.vue'
+import shopcar from './components/tabbar/ShopcarContainer.vue'
 
 //创建路有规则对象
 var routerRuleObj = new VueRouter({
     routes : [
-    ]
+        {path : '/' , redirect : '/home' },  //默认进来是根路径'/'  来个路由重定向
+        {path : '/home' , component : home },
+        {path : '/member' , component : member },
+        {path : '/search' , component : search },
+        {path : '/shopcar' , component : shopcar },
+    ],
+    //路由高亮的类设置，使用mui提供的一个类mui-active
+    linkActiveClass : 'mui-active'
 })
 
 

@@ -38,6 +38,7 @@
 <style lang="less" scoped>
 .app_container{
     padding-top: 40px;
+    padding-bottom: 50px;
     overflow: hidden;  //滑动是去掉滚动条
 }
 

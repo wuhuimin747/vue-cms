@@ -22,7 +22,13 @@ import routerRuleObj from './router.js'
 //导入vue-resource组件
 import VueResource from 'vue-resource'
 Vue.use(VueResource)
+Vue.http.options.root = 'http://www.liulongbin.top:3005';//设置数据请求地址的base路径
 
+//全局时间格式过滤器,使用moment插件
+import moment from 'moment'
+Vue.filter('dateformat' , function (data , pattern = 'YYYY-MM-DD') { //第一个参数永远是被过滤的数据,  设置一个默认模式patern
+    return moment(data).format(pattern);
+})
 //根组件app , 绑定index页面的容器#app
 var vm = new Vue({
     el : '#app',

@@ -46,7 +46,7 @@
     transform : translateX(100%); 
 }
 .v-leave-to {
-    opacity : 0;
+    opacity : 0; 
     transform : translateX(-100%); 
     position : absolute;
 }

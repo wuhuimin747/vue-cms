@@ -5,10 +5,11 @@ import Vue from "vue";
 import app from "./App.vue";
 
 //引入min-ui组件
-import { Header , Swipe, SwipeItem} from 'mint-ui';
+import { Header , Swipe, SwipeItem , Button } from 'mint-ui';
 Vue.component(Header.name, Header); //全局注册组件
 Vue.component(Swipe.name, Swipe);
 Vue.component(SwipeItem.name, SwipeItem);
+Vue.component(Button.name, Button);
 
 //引入MUI的样式文件
 import './lib/mui/css/mui.css'

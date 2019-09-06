@@ -8,6 +8,7 @@ import search from './components/tabbar/SearchContainer.vue'
 import shopcar from './components/tabbar/ShopcarContainer.vue'
 import newslist from './components/news/NewsList.vue'
 import newsinfo from './components/news/NewsInfo.vue'
+import photolist from './components/photos/PhotoList.vue'
 
 //创建路有规则对象
 var routerRuleObj = new VueRouter({
@@ -19,6 +20,7 @@ var routerRuleObj = new VueRouter({
         {path : '/shopcar' , component : shopcar },
         {path : '/home/newslist' , component : newslist },
         {path : '/home/newsinfo/:id' , component : newsinfo },
+        {path : '/home/photolist' , component : photolist },
     ],
     //路由高亮的类设置，使用mui提供的一个类mui-active
     linkActiveClass : 'mui-active'

@@ -28,6 +28,10 @@ Vue.use(VueResource)
 Vue.http.options.root = 'http://www.liulongbin.top:3005';//设置数据请求地址的base路径
 Vue.http.options.emulateJSON = true; //以表单格式post  application/x-www-form-urlencoded
 
+//导入vue-preview图片缩略图组件
+import VuePreview from 'vue-preview';
+Vue.use(VuePreview)
+
 //全局时间格式过滤器,使用moment插件
 import moment from 'moment'
 Vue.filter('dateformat' , function (data , pattern = 'YYYY-MM-DD') { //第一个参数永远是被过滤的数据,  设置一个默认模式patern

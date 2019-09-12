@@ -1,55 +1,71 @@
 <template>
   <div class="goods-list">
     
-    <div class="goods-item">
-      <img src="http://ofv795nmp.bkt.clouddn.com//upload/201504/20/thumb_201504200119256512.jpg" alt="">
-      <h1 class="title">小米（Mi）小米Note 16G双网通版</h1>
+    <!-- <router-link tag="div" class="goods-item" v-for="item in list" :key="item.id" :to="'/home/goodsinfo/' + item.id">
+      <img :src="item.img_url" alt="">
+      <h1 class="title">{{item.title}}</h1>
       <div class="info">
         <p class="price">
-          <span class="now">￥899</span>
-          <span class="old">￥999</span>
+          <span class="now">￥{{item.sell_price}}</span>
+          <span class="old">￥{{item.market_price}}</span>
         </p>
         <p class="sell">
           <span>热卖中</span>
-          <span>剩60件</span>
+          <span>剩{{item.stock_quantity}}件</span>
+        </p>
+      </div>
+    </router-link> -->
+
+    <!-- 编程式导航 -->
+    <div class="goods-item" @click="getDetail(item.id)" v-for="item in list" :key="item.id" >
+      <img :src="item.img_url" alt="">
+      <h1 class="title">{{item.title}}</h1>
+      <div class="info">
+        <p class="price">
+          <span class="now">￥{{item.sell_price}}</span>
+          <span class="old">￥{{item.market_price}}</span>
+        </p>
+        <p class="sell">
+          <span>热卖中</span>
+          <span>剩{{item.stock_quantity}}件</span>
         </p>
       </div>
     </div>
 
-    <div class="goods-item">
-      <img src="http://ofv795nmp.bkt.clouddn.com//upload/201504/20/thumb_201504200214471783.jpg" alt="">
-      <h1 class="title">尼康(Nikon)D3300套机（18-55mm f/3.5-5.6G VRII）（黑色）</h1>
-      <div class="info">
-        <p class="price">
-          <span class="now">￥899</span>
-          <span class="old">￥999</span>
-        </p>
-        <p class="sell">
-          <span>热卖中</span>
-          <span>剩60件</span>
-        </p>
-      </div>
-    </div>
-
-    <div class="goods-item">
-      <img src="http://ofv795nmp.bkt.clouddn.com//upload/201504/20/thumb_201504200119256512.jpg" alt="">
-      <h1 class="title">小米（Mi）小米Note 16G双网通版</h1>
-      <div class="info">
-        <p class="price">
-          <span class="now">￥899</span>
-          <span class="old">￥999</span>
-        </p>
-        <p class="sell">
-          <span>热卖中</span>
-          <span>剩60件</span>
-        </p>
-      </div>
-    </div>
-
+    <mt-button type="danger" size="large" @click="getMore">加载更多</mt-button>
   </div>
 </template>
 
 <script>
+export default {
+    data(){
+        return{
+            pageIndex : 1,
+            list : []
+        }
+    },
+    created(){
+        this.getGoodList();
+    },
+    methods : {
+        getGoodList(){
+            this.$http.get('api/getgoods?pageindex=' + this.pageIndex)
+            .then(function(data){
+                if(data.body.status == 0){
+                    this.list = this.list.concat(data.body.message);
+                }
+            })
+        },
+        getMore(){
+            this.pageIndex++;
+            this.getGoodList();
+        },
+        getDetail(id){
+            // 命名的路由  $route里面是当前路由的参数     $router是路由导航对象
+            this.$router.push({ name: 'goodinfo', params: { id : id }})
+        }
+    }
+}
 </script>
 
 <style lang="less" scoped>

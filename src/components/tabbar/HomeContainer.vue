@@ -1,11 +1,7 @@
 <template>
     <div>
         <!-- 轮播图部分 -->
-        <mt-swipe :auto="4000">
-            <mt-swipe-item v-for="item in lunboList" :key="item.id">
-                <img :src="item.img" alt="">
-            </mt-swipe-item>
-        </mt-swipe>
+        <lunbotu :list="lunboList" :isfull="true"></lunbotu>
 
         <!-- 六宫格部分 -->
         <ul class="mui-table-view mui-grid-view mui-grid-9">
@@ -52,6 +48,7 @@
 <script>
 //按需引入toast组件
 import { Toast } from "mint-ui";
+import lunbotu from "../subcomponents/swiper.vue";
 
 export default {
     data() {
@@ -78,32 +75,14 @@ export default {
                     }
                 });
         }
+    },
+    components : {
+        lunbotu : lunbotu
     }
 };
 </script>
 
 <style lang="less" scoped>
-//轮播图手动设置高度
-.mint-swipe {
-    height: 200px;
-    //less语法设置每张轮播图的颜色
-    .mint-swipe-item {
-        &:nth-child(1) {
-            background-color: aquamarine;
-        }
-        &:nth-child(2) {
-            background-color: cadetblue;
-        }
-        &:nth-child(3) {
-            background-color: cornflowerblue;
-        }
-        //图片的宽高
-        img {
-            width: 100%;
-            height: 100%;
-        }
-    }
-}
 
 //重写六宫格mui样式  ul
 .mui-grid-view.mui-grid-9 {

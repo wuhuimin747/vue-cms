@@ -37,8 +37,8 @@
                 </div>
             </div>
             <div class="mui-card-footer">
-                <mt-button type="primary" size="large" plain>图文介绍</mt-button>
-                <mt-button type="danger" size="large" plain>商品评论</mt-button>
+                <mt-button type="primary" size="large" plain @click="goDesc(id)">图文介绍</mt-button>
+                <mt-button type="danger" size="large" plain @click="goCmt(id)">商品评论</mt-button>
             </div>
         </div>
     </div>
@@ -50,9 +50,11 @@ import lunbotu from "../subcomponents/swiper.vue";
 import numberbox from "../subcomponents/numberbox.vue";
 import mui from "../../lib/mui/js/mui.min.js";
 
+
 export default {
     data() {
         return {
+            id : this.$route.params.id,
             lunboList: [],
             goodsInfo : {},
         };
@@ -67,7 +69,7 @@ export default {
     methods: {
         getlunboList() {
             this.$http
-                .get("api/getthumimages/" + this.$route.params.id)
+                .get("api/getthumimages/" + this.id)
                 .then(function(result) {
                     //console.info(result.body.message[0].src);
                     if (result.body.status == 0) {
@@ -82,7 +84,7 @@ export default {
         },
         getGoodsInfo(){
             this.$http
-                .get("api/goods/getinfo/" + this.$route.params.id)
+                .get("api/goods/getinfo/" + this.id)
                 .then(function(result) {
                     if (result.body.status == 0) {
                         this.goodsInfo = result.body.message[0];
@@ -90,6 +92,12 @@ export default {
                         Toast("获取商品参数信息失败！");
                     }
                 });
+        },
+        goDesc(id){ //商品介绍
+            this.$router.push({name : 'goodsDesc' , params : {id : this.id}})
+        },
+        goCmt(id){ //商品评论
+            this.$router.push({name : 'goodsCmt' , params : {id : this.id}})
         }
 
     },

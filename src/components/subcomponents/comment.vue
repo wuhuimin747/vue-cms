@@ -31,9 +31,9 @@ export default {
       pageIndex: 1, // 默认展示第一页数据
       comments: [], // 所有的评论数据
       msg: '',
-      artid: this.$route.params.id
     };
   },
+  props: ["id"],
   created() {
     this.getComments();
   },
@@ -61,7 +61,7 @@ export default {
         if(this.msg.trim().length == 0){
             Toast('请输入有效评论！')
         }else{
-            this.$http.post('api/postcomment/' + this.artid , { 'content' : this.msg })
+            this.$http.post('api/postcomment/' + this.id , { 'content' : this.msg })
             .then(function (result) {
                 //console.info('ok');
                 if(result.body.status == 0){
@@ -75,8 +75,7 @@ export default {
 
         }
     }
-  },
-  props: ["id"]
+  }
 };
 </script>
 

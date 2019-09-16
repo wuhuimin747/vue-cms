@@ -12,6 +12,8 @@ import photolist from './components/photos/PhotoList.vue'
 import photoinfo from './components/photos/PhotoInfo.vue'
 import goodslist from './components/goods/GoodsList.vue'
 import goodsinfo from './components/goods/GoodsInfo.vue'
+import goodsDesc from './components/goods/GoodsDesc.vue'
+import goodsCmt from './components/goods/GoodsComment.vue'
 
 //创建路有规则对象
 var routerRuleObj = new VueRouter({
@@ -27,6 +29,8 @@ var routerRuleObj = new VueRouter({
         {path : '/home/photoinfo/:id' , component : photoinfo },
         {path : '/home/goodslist' , component : goodslist },
         {path : '/home/goodsinfo/:id' , component : goodsinfo , name : 'goodinfo' },
+        {path : '/home/goodsDesc/:id' , component : goodsDesc , name : 'goodsDesc' },
+        {path : '/home/goodsCmt/:id' , component : goodsCmt , name : 'goodsCmt' },
     ],
     //路由高亮的类设置，使用mui提供的一个类mui-active
     linkActiveClass : 'mui-active'

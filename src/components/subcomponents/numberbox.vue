@@ -10,7 +10,7 @@
 import mui from "../../lib/mui/js/mui.min.js";
 
 export default {
-    props : ['max'],  //父组件向子组件传值，  数据源是异步操作  ， 会有响应时间的变化  undefined -> 确定值
+    props : ['max'] ,  //父组件向子组件传值，  数据源是异步操作  ， 会有响应时间的变化  undefined -> 确定值
     mounted : function() {
         mui(".mui-numbox").numbox();
     },

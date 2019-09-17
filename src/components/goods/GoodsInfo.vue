@@ -107,8 +107,11 @@ export default {
             this.$router.push({ name: "goodsCmt", params: { id: this.id } });
         },
         addToShopCar() {
-            // 添加到购物车
+            // 添加到购物车的动效
             this.ballFlag = !this.ballFlag;
+            // 把商品添加到公共数据仓库store里面
+            var goodsInfo = {id : this.id , count : parseInt(this.selectedCount) , price : this.goodsInfo.sell_price , selected : true }
+            this.$store.commit('addToCar' , goodsInfo);
         },
         beforeEnter(el) {
             el.style.transform = "translate(0, 0)";

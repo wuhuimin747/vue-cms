@@ -5,6 +5,9 @@
             <span slot="left" v-if="$route.path!='/home'">
                 <mt-button icon="back" @click="goback">返回</mt-button>
             </span>
+            <!-- <span slot="right">
+               {{testdata}}
+            </span> -->
         </mt-header>
 
         <!-- 这里是 router-view 路由区域 -->
@@ -41,8 +44,16 @@
 <script>
 export default {
     data(){
-        return {}
+        return {
+            //testdata : ''
+        }
     },
+    // created(){
+    //     this.$http.get('dictItem/types?types=BIZ014').then(res => {
+    //         console.info(res)
+    //         this.testdata = res.body[0].name;
+    //     })
+    // },
     methods : {
         goback() {
             this.$router.go(-1);

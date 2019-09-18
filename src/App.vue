@@ -2,8 +2,8 @@
     <div class="app_container">
         <!-- 这里是 header 区域 -->
         <mt-header fixed title="huimin的商城">
-            <span slot="left" >
-                <mt-button icon="back">返回</mt-button>
+            <span slot="left" v-if="$route.path!='/home'">
+                <mt-button icon="back" @click="goback">返回</mt-button>
             </span>
         </mt-header>
 
@@ -39,16 +39,16 @@
 </template>
 
 <script>
-// export default {
-//     data(){
-//         return {}
-//     },
-//     methods : {
-//         hisbak() {
-//             this.$router.go(-1);
-//         }
-//     }
-// }
+export default {
+    data(){
+        return {}
+    },
+    methods : {
+        goback() {
+            this.$router.go(-1);
+        }
+    }
+}
 </script>
 
 <style lang="less" scoped>

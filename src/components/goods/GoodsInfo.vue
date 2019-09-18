@@ -55,7 +55,7 @@
 <script>
 import { Toast } from "mint-ui";
 import lunbotu from "../subcomponents/swiper.vue";
-import numberbox from "../subcomponents/numberbox.vue";
+import numberbox from "../subcomponents/goodsinfo_numberbox.vue";
 
 export default {
     data() {
@@ -111,7 +111,7 @@ export default {
             this.ballFlag = !this.ballFlag;
             // 把商品添加到公共数据仓库store里面
             var goodsInfo = {id : this.id , count : parseInt(this.selectedCount) , price : this.goodsInfo.sell_price , selected : true }
-            this.$store.commit('addToCar' , goodsInfo);
+            this.$store.commit('goodsinfo_addToCar' , goodsInfo);
         },
         beforeEnter(el) {
             el.style.transform = "translate(0, 0)";
@@ -127,7 +127,7 @@ export default {
             // 5. 如何 获取 徽标和小球的 位置？？？   domObject.getBoundingClientRect()
 
             // 获取小球的 在页面中的位置
-            console.info(this.$refs.ball);
+            //console.info(this.$refs.ball);
 
             const ballPosition = this.$refs.ball.getBoundingClientRect();
             // 获取 徽标 在页面中的位置
@@ -148,7 +148,7 @@ export default {
         getSelectedCount(count){
             //获取numberbox子组件的购买数量
             this.selectedCount = count;
-            console.info(this.selectedCount);
+            //console.info(this.selectedCount);
             
         }
     },

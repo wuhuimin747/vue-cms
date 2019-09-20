@@ -49,7 +49,7 @@ v-text	            标签指令，标签的文本节点全量替换，不可拼�
 v-html	            标签指令，全量替换文本节点，可解析字符串中的html，<p v-html="h"></p>      
 v-bind / :	        属性绑定，自有属性或者自定义属性，<span :att="msg"></span>
 v-on / @	        事件绑定，自有事件或者自定义事件，  @click  @change
-事件描述符：            @click.stop.once.prevent     可以连着写，停止冒泡，事件处理函数执行一                     次，阻止默认行为（表单按钮点击默认行为是提交表单，a标签默认行为是跳转至href                    指向的位置）
+事件描述符：            @click.stop.once.prevent     可以连着写，停止冒泡，事件处理函数执行一 次，阻止默认行（表单按钮点击默认行为是提交表单，a标签默认行为是跳转至href指向的位置）
 键值描述符：         @keyup.enter   .up  .down .left .right .esc .delete .space 按这些键抬                     起来的时候执行处理函数
 v-model	            表单元素专属，input select textarea button, 数据双向绑定，页面的v会改变m                     数据，m也会改变v的数据，上面的那些指令都是单向绑定，m改变v。
 v-if/v-show	        控制dom的显隐，v-if是直接不渲染，v-show是加一个样式display:none;

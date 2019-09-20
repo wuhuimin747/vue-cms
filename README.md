@@ -77,12 +77,6 @@ v-if/v-show	        控制dom的显隐，v-if是直接不渲染，v-show是加�
 ```
 	全局指令：v-focus
 	Vue.directive('focus' , {
-		mounted(d){
-			d.focus();
-		}
-	})
-	
-	Vue.directive('focus' , {
 		bind : function(el){  //元素绑定了指令的时机，执行该处理函数，执行一次
 			
 		},

@@ -41,22 +41,23 @@ git push <br>
 ```
 
 ## Vue课程后知识点自检
+
+### 1. vue基本指令
 ```
-	1. vue基本指令
-
 插值表达式{{}}  	<p>售价为{{ good.price}}</p> 可拼接，随意插值  {{'售价为' + good.price}}    
-v-text	标签指令，标签的文本节点全量替换，不可拼接. <p v-text="msg"></p>
-v-html	标签指令，全量替换文本节点，可解析字符串中的html，<p v-html="h"></p>    h : '<span>hahaha</span>'
-v-bind / :	属性绑定，自有属性或者自定义属性，<span :att="msg"></span>
-v-on / @	事件绑定，自有事件或者自定义事件，  @click  @change
-	事件描述符：  @click.stop.once.prevent     可以连着写，停止冒泡，事件处理函数执行一次，阻止默认行为（表单按钮点击默认行为是提交表单，a标签默认行为是跳转至href指向的位置）
-	键值描述符：  @keyup.enter   .up  .down .left .right .esc .delete .space 按这些键，抬起来的时候执行处理函数
-v-model	表单元素专属，input select textarea button, 数据双向绑定，页面的v会改变m数据，m也会改变v的数据，上面的那些指令都是单向绑定，m改变v。
-v-if/v-show	控制dom的显隐，v-if是直接不渲染，v-show是加一个样式display:none;
+v-text	            标签指令，标签的文本节点全量替换，不可拼接. <p v-text="msg"></p>
+v-html	            标签指令，全量替换文本节点，可解析字符串中的html，<p v-html="h"></p>      
+v-bind / :	        属性绑定，自有属性或者自定义属性，<span :att="msg"></span>
+v-on / @	        事件绑定，自有事件或者自定义事件，  @click  @change
+事件描述符：            @click.stop.once.prevent     可以连着写，停止冒泡，事件处理函数执行一                     次，阻止默认行为（表单按钮点击默认行为是提交表单，a标签默认行为是跳转至href                    指向的位置）
+键值描述符：         @keyup.enter   .up  .down .left .right .esc .delete .space 按这些键抬                     起来的时候执行处理函数
+v-model	            表单元素专属，input select textarea button, 数据双向绑定，页面的v会改变m                     数据，m也会改变v的数据，上面的那些指令都是单向绑定，m改变v。
+v-if/v-show	        控制dom的显隐，v-if是直接不渲染，v-show是加一个样式display:none;
+```
 
 
-
-	2. 基本vue实例的创建
+### 2. 基本vue实例的创建
+```
 	a.如果是普通的html页面，首先要引入vue.js文件
 	b.定义一个dom容器  div id="app"
 	c. var vm = new Vue({
@@ -70,9 +71,10 @@ v-if/v-show	控制dom的显隐，v-if是直接不渲染，v-show是加一个样�
 			…
 		}
 	})
+```	
 	
-	
-	3. 自定义指令
+### 	3. 自定义指令
+```
 	全局指令：v-focus
 	Vue.directive('focus' , {
 		mounted(d){
@@ -111,15 +113,17 @@ v-if/v-show	控制dom的显隐，v-if是直接不渲染，v-show是加一个样�
 		}
 		
 	}
-	
-	4. 自定义过滤器
+```	
+### 	4. 自定义过滤器
+```
 全局过滤器、私有过滤器,将数据做一层包装并返回，不改变元数据
 {{ date | dateformat}}
 Vue.filter('dateformat', function(data , param){  //第一个参数永远是管道符前面的数值
 	return  …..;
 })
-
-	5. vue生命周期函数
+```
+### 	5. vue生命周期函数
+```
 	可以放在vm实例里面，可以放在组件里面
 	beforeCreate  
 	created    实例中的data和methods刚准备好
@@ -129,13 +133,15 @@ Vue.filter('dateformat', function(data , param){  //第一个参数永远是管�
 	updated        data发生了变化，v页面上也同步变化了
 	beforeDestroy
 	destroyed     vm实例完全销毁了
-	
-	6. MVVM模型的含义
+```	
+### 	6. MVVM模型的含义
+```
 m指的是数据，对应data{}  , v指的是页面上的dom ,  vm是一个桥梁， 沟通数据和页面元素的读写。页面v想要申请m里的数据，就向vm实例发读请求，vm从m里找到数据交给v ， m中的数据发生了变化，通过vm改变页面上的展示。v是个表单元素，想要修改数据，同样发送写请求给vm，vm来改变对应的m中的数据。
+```
 
 
-
-	7. 自定义组件
+### 	7. 自定义组件
+```
 	全局组件或者是私有组件
 	Vue.component('my_com' , {
 		template : '<h1>标题</h1>'
@@ -184,9 +190,9 @@ m指的是数据，对应data{}  , v指的是页面上的dom ,  vm是一个桥�
 	
 	
 	普通组件占位符<component :is="my_com"></component>, 用于在一个位置切换组件
-	
-	8. 父子组件互相传值，父组件向子组件传函数
-	
+```	
+### 	8. 父子组件互相传值，父组件向子组件传函数
+```	
 	<div id="app">
 		<my_com  :msg="parentMsg"></my_com>   //parentMsg是父组件的数据
 	</div>//msg是自定义属性，普通属性想用data数据，就得v-bind
@@ -199,9 +205,10 @@ m指的是数据，对应data{}  , v指的是页面上的dom ,  vm是一个桥�
 	</div>
 	
 	子组件调用函数的方法  this.$emit('my_event'   ,  函数参数)  ; 通过调用父组件的函数可以向父组件传值
+```	
 	
-	
-	9. vue-router 路由的基本使用
+### 	9. vue-router 路由的基本使用
+```
 引入vue-router.js ， 建立路由规则对象 ， 定义好路由要用到的组件  ， 吧路由规则对象注册到vm实例上 ，  写好对应的router-link跳转链接  和  router-view占位坑
 var routerRuleObj = new VueRouter({
 	routes : [
@@ -257,10 +264,11 @@ routes :[
                     ]
                 }
             ]
+```
 
 
-
-	10. vue实例中的几个$开头的数据
+### 	10. vue实例中的几个$开头的数据
+```
 this.$route.path   .params  .query  表示当前的url路由的路径  路由规则里面写/home/login/:id ，实际的路由/home/login/88 参数.params.id就能找到  /home/login?name=wuhuimin查询参数 .query.name就能找到
 
 this.$refs.xxx   dom元素的引用，组件实例的引用。<imput ref="m">  能找到dom  <my_com ref="com"></my_com>能找到组件，顺藤摸瓜找到组件的data  methods等等
@@ -269,9 +277,10 @@ this.$router  编程式导航，可以改变当前的路由，相当于<router-l
 有好几种写法   this.$router.push({ name : '在路有规则对象里面定义的路径名'  ,  params : {a : 1 , b :1} })
 
 this.$store   vuex状态管理器的  公共数据仓库   有state 放数据   mutations放修改数据的管理员方法  有getters读取包装后的数据
+```
 
-
-	11. watch   computed  属性的使用
+### 	11. watch   computed  属性的使用
+```
 watch ： {
 	msg : function（newval , oldval）{
 		//监视data中的数据的变化
@@ -291,13 +300,16 @@ computed : {
 }
 
 全名是{{finalName}}
-
-	12. vue-resource的使用，异步请求服务器数据
+```
+### 	12. vue-resource的使用，异步请求服务器数据
+```
 	先引入vue-resource的包或者咋工程化里面npm装一下 ，然后在main.js里面import一下
 	看官方的api文档，  get请求基本上就是  this.$http.get('').then()
 	post请求基本上是 this.$http.post('' , {传递的对象} ，{'emulateJSON': 'application/x-www-form-urlencoded'}).then() 用表单提交的格式传输数据
 	或者在全局配置一下Vue.http.options.emulateJSON = true;
-	13. webpack的打包原理
+```
+### 	13. webpack的打包原理
+```
 	打包的目的是为了将高级的js语法编译成低级的浏览器可以解析的语法，把前端资源文件.css   .less  .scss  .js   .jpg  .png  .eot  等资源文件打包放在一个文件里面，all  in  one ，所以最终生成的文件就是一个index。html和一个bundle.js文件，不依赖别的文件，解决了过去工程中一大堆文件相互依赖的问题。有时候webpack自己解析不了某些格式的文件，需要第三方加载器来干这个活儿，css-loader , less-loader  , url-loader。
 	在开发的时候每次修改一点，就得重新打包，很麻烦，所以在开发是时候引入一个插件嫩动态打包，叫 webpack-dev-server       ,  这玩意儿生成的bundle.js文件是放在内存里面的，所以访问很快。
 	//test.js向外暴露默认的成员,ES6语法
@@ -310,15 +322,18 @@ computed : {
 	//main.js 导入别的默认尘缘名字随便,ES6语法
 	import test from './test.js'; 
 	import {title , price} from './test.js'; //非默认成员，名字得一致
-	
-	14. webpack.config.js里面的基本配置和src文件夹布局
+```	
+### 	14. webpack.config.js里面的基本配置和src文件夹布局
+```
 	src放源码，dist放打包好的发布的产品文件bundle.js,  src底下放index.html  main.js   App.vue  router.js   barbel   .gitignore  node_mudules  components   libs  images
 	
 	基本配置:
 	使用node语法写打包的入口文件main.js  和出口文件bundle.js  引入各种第三方加载器，把各种webpack解析不了的后缀文件配置好对应的加载器
 	
 	在package.json里面写上 启动hot热部署的配置 
-	15. vuex状态管理器的用处和使用方法
+```    
+### 	15. vuex状态管理器的用处和使用方法
+```
 vuex的目的是解决父子组件之间 、 祖孙组件之间 、 不相干组件之间传值的问题，解决方案是吧一些大家都用到的公共数据放在一个store仓库里面，然后在mutations里面提供一些操作仓库数据的方法，在getters里面提供一些数据包装的读取方法，第一好store变凉以后，注册到跟实例上，就像注册router一样，这样全局的各个组件都鞥使用store仓库里的数据了，写操作也是可以做到的。
 
 var store = new Vuex.Store({

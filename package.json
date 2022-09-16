@@ -10,7 +10,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "bootstrap": "^3.3.7",
+    "bootstrap": "^3.4.1",
     "mint-ui": "^2.2.9",
     "moment": "^2.19.1",
     "vue": "^2.5.2",
